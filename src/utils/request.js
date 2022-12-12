@@ -1,22 +1,28 @@
 import { message } from 'antd';
+import { history } from 'umi';
 import { extend } from 'umi-request';
 
 export const PREFIX = '/api';
 
 // 把userid添加到请求头
 export const AddAuthToken = (url, options = {}) => {
-  // const ahthor = localStorage.getItem('authorzation');
   const header = {};
-  header['X-User-Id'] = '666666';
+  const authorization = localStorage.getItem('authorization');
+  header['X-Authorization'] = authorization;
+
+  if (!authorization) {
+    history.push('/login');
+    return;
+  }
 
   return {
     url,
     options: {
       ...options,
-      // headers: {
-      //     ...(options?.headers || {}),
-      //     ...header
-      // }
+      headers: {
+        ...(options?.headers || {}),
+        ...header,
+      },
     },
   };
 };
@@ -31,7 +37,12 @@ export const AddGlobalError = async (ctx, next) => {
 
 // 删除登陆信息
 export const DelAuthToken = async (response) => {
-  localStorage.removeItem('authorzation');
+  const data = await response.clone().json();
+
+  if (data.code === 401) {
+    history.push('/login');
+    return;
+  }
 
   return response;
 };

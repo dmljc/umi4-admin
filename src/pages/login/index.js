@@ -1,5 +1,5 @@
 import { Button, Form, Input, message } from 'antd';
-import { connect } from 'umi';
+import { connect, history } from 'umi';
 
 const layout = {
   labelCol: {
@@ -20,7 +20,10 @@ const Login = (props) => {
       type: 'user/login',
       payload: { ...values },
     }).then((resp) => {
-      if (resp.success) {
+      if (resp?.success) {
+        const { authorization } = resp?.data;
+        localStorage.setItem('authorization', authorization);
+        history.push('/home');
         message.success('登录成功!!!!!');
       }
     });

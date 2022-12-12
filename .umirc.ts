@@ -37,12 +37,16 @@ export default defineConfig({
       path: '/register',
       component: '@/pages/register',
       icon: 'home',
+      hideInMenu: true, // 隐藏自己和子菜单
+      menuRender: false, // 不显示菜单
     },
     {
       name: '登录页面',
       path: '/login',
       component: '@/pages/login',
       icon: 'home',
+      hideInMenu: true,
+      menuRender: false,
     },
     {
       name: '系统设置',
