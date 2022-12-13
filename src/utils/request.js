@@ -4,15 +4,14 @@ import { extend } from 'umi-request';
 
 export const PREFIX = '/api';
 
-// 把userid添加到请求头
+// 把 authorization 添加到请求头
 export const AddAuthToken = (url, options = {}) => {
   const header = {};
   const authorization = localStorage.getItem('authorization');
-  header['X-Authorization'] = authorization;
-
-  if (!authorization) {
+  if (authorization) {
+    header['X-Authorization'] = authorization;
+  } else {
     history.push('/login');
-    return;
   }
 
   return {
@@ -20,7 +19,7 @@ export const AddAuthToken = (url, options = {}) => {
     options: {
       ...options,
       headers: {
-        ...(options?.headers || {}),
+        ...options?.header,
         ...header,
       },
     },
@@ -30,8 +29,8 @@ export const AddAuthToken = (url, options = {}) => {
 // 全局异常信息拦截
 export const AddGlobalError = async (ctx, next) => {
   await next();
-  if (ctx.res.success === false && ctx.res.errMsg) {
-    message.error(ctx.res.errMsg);
+  if (ctx?.res?.success === false && ctx?.res?.errMsg) {
+    message.error(ctx?.res?.errMsg);
   }
 };
 
@@ -40,6 +39,7 @@ export const DelAuthToken = async (response) => {
   const data = await response.clone().json();
 
   if (data.code === 401) {
+    localStorage.removeItem('authorization');
     history.push('/login');
     return;
   }

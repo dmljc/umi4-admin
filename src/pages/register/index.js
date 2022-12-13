@@ -1,5 +1,5 @@
 import { Button, Form, Input, message } from 'antd';
-import { connect } from 'umi';
+import { connect, history } from 'umi';
 
 const layout = {
   labelCol: {
@@ -22,6 +22,7 @@ const Register = (props) => {
     }).then((resp) => {
       if (resp.success) {
         message.success('注册成功!!!!!');
+        history.push('/login');
       }
     });
   };
