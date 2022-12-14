@@ -1,4 +1,4 @@
-import { getList, add, update, deluser } from '../services';
+import { add, deluser, getList, update } from '../services';
 
 export default {
     namespace: 'analysis',

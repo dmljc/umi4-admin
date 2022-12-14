@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Table, message, Divider } from 'antd';
+import { Button, Divider, message, Table } from 'antd';
+import { useEffect, useState } from 'react';
 import { connect } from 'umi';
 import CreateModal from './components/createModal';
 import ss from './index.less';
@@ -77,14 +77,14 @@ const IndexPage = (props) => {
         const { id } = item;
         dispatch({
             type: 'analysis/deluser',
-            payload: { id }
+            payload: { id },
         }).then((resp) => {
             if (resp) {
                 onFetchList();
                 message.success('删除成功');
             }
         });
-    }
+    };
 
     return (
         <div className={ss.root}>

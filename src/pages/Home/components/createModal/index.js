@@ -1,5 +1,5 @@
-import react, { useEffect } from 'react';
-import { Modal, message, Form, Input, Select } from 'antd';
+import { Form, Input, message, Modal, Select } from 'antd';
+import { useEffect } from 'react';
 import { connect } from 'umi';
 
 const { Option } = Select;
@@ -19,9 +19,9 @@ const AddModal = (props) => {
         isModalOpen = false,
         record = null,
         modalType = 'add',
-        setModalType = () => { },
-        setIsModalOpen = () => { },
-        onFetchList = () => { },
+        setModalType = () => {},
+        setIsModalOpen = () => {},
+        onFetchList = () => {},
     } = props;
 
     const [form] = Form.useForm();
@@ -84,17 +84,29 @@ const AddModal = (props) => {
             onCancel={onCancel}
         >
             <Form {...layout} form={form} onFinish={onFinish}>
-                <Form.Item name="name" label="姓名" rules={[{ required: true }]}>
+                <Form.Item
+                    name="name"
+                    label="姓名"
+                    rules={[{ required: true }]}
+                >
                     <Input />
                 </Form.Item>
-                <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
+                <Form.Item
+                    name="gender"
+                    label="Gender"
+                    rules={[{ required: true }]}
+                >
                     <Select>
                         <Option value="男">男</Option>
                         <Option value="女">女</Option>
                         <Option value="其他">其他</Option>
                     </Select>
                 </Form.Item>
-                <Form.Item name="phone" label="手机" rules={[{ required: true }]}>
+                <Form.Item
+                    name="phone"
+                    label="手机"
+                    rules={[{ required: true }]}
+                >
                     <Input />
                 </Form.Item>
             </Form>
