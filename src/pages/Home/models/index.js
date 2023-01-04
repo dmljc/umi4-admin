@@ -1,7 +1,7 @@
 import { add, deluser, getList, update } from '../services';
 
 export default {
-    namespace: 'analysis',
+    namespace: 'home',
     state: {},
     effects: {
         *getList({ payload = {} }, { call }) {

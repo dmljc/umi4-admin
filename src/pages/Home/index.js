@@ -54,7 +54,7 @@ const IndexPage = (props) => {
 
     const onFetchList = () => {
         dispatch({
-            type: 'analysis/getList',
+            type: 'home/getList',
             payload: {},
         }).then((resp) => {
             if (resp) {
@@ -76,7 +76,7 @@ const IndexPage = (props) => {
     const onDelete = (item) => {
         const { id } = item;
         dispatch({
-            type: 'analysis/deluser',
+            type: 'home/deluser',
             payload: { id },
         }).then((resp) => {
             if (resp) {
@@ -105,6 +105,6 @@ const IndexPage = (props) => {
         </div>
     );
 };
-export default connect((analysis) => ({
-    analysis,
+export default connect((home) => ({
+    home,
 }))(IndexPage);

@@ -50,7 +50,7 @@ const AddModal = (props) => {
 
         if (modalType === 'add') {
             dispatch({
-                type: 'analysis/add',
+                type: 'home/add',
                 payload: values,
             }).then((resp) => {
                 onCancel();
@@ -60,7 +60,7 @@ const AddModal = (props) => {
         } else {
             const { id } = record;
             dispatch({
-                type: 'analysis/update',
+                type: 'home/update',
                 payload: { id, ...values },
             }).then((resp) => {
                 onCancel();
@@ -114,6 +114,6 @@ const AddModal = (props) => {
     );
 };
 
-export default connect((analysis) => ({
-    analysis,
+export default connect((home) => ({
+    home,
 }))(AddModal);
