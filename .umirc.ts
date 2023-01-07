@@ -54,6 +54,14 @@ export default defineConfig({
             component: '@/pages/system',
             icon: 'setting',
         },
+        {
+            name: '数据分析',
+            path: '/analysis',
+            component: '@/pages/analysis',
+            icon: 'setting',
+            hideInMenu: true,
+            menuRender: false,
+        },
     ],
     npmClient: 'pnpm',
 });
