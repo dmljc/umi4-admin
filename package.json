@@ -12,16 +12,16 @@
     },
     "dependencies": {
         "@ant-design/icons": "^4.8.0",
-        "@ant-design/pro-components": "^2.3.47",
-        "@umijs/max": "^4.0.36",
-        "antd": "^5.0.7",
+        "@ant-design/pro-components": "^2.3.50",
+        "@umijs/max": "^4.0.41",
+        "antd": "^5.1.2",
         "umi-request": "^1.4.0"
     },
     "devDependencies": {
         "@types/react": "^18.0.26",
-        "@types/react-dom": "^18.0.9",
-        "@umijs/plugins": "^4.0.36",
-        "husky": "^8.0.2",
+        "@types/react-dom": "^18.0.10",
+        "@umijs/plugins": "^4.0.41",
+        "husky": "^8.0.3",
         "lint-staged": "^13.1.0",
         "prettier": "^2.8.1",
         "prettier-plugin-organize-imports": "^3",
